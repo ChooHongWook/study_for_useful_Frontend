@@ -1,0 +1,17 @@
+{
+  "name": "each_state.use_props",
+  "version": "1.0.0",
+  "description": "props를 사용하여 state를 사용",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "next"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "next": "^12.0.10",
+    "react": "^18.2.0"
+  }
+}
