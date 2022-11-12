@@ -1,0 +1,23 @@
+{
+  "name": "more_state_potimise.use_props",
+  "version": "1.0.0",
+  "description": "props를 사용하여 state를 사용",
+  "main": "index.js",
+  "scripts": {
+    "dev": "next",
+    "build": "next build",
+    "start": "next start"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "next": "^12.0.10",
+    "react": "^18.2.0"
+  },
+  "devDependencies": {
+    "@types/node": "^18.11.9",
+    "@types/react": "^18.0.25",
+    "typescript": "^4.8.4"
+  }
+}
