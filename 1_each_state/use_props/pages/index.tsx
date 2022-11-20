@@ -5,8 +5,7 @@ let test = 'ddds';
 
 const Home = () => (
   <>
-    <h1>Hello World!</h1>
-    <h1>Hello World!</h1>
+    <h1>관리자페이지</h1>
   </>
 );
 
