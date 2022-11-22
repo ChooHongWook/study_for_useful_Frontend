@@ -9,9 +9,7 @@ const Home = () => {
   const [render, setRender] = useState(false);
   console.log('랜더링 체크');
   const handle = () => {};
-  let date = '';
   const nameDataRef = useRef(null);
-  console.log('date: ' + date);
   return (
     <>
       <h1>관리자페이지</h1>
@@ -25,7 +23,6 @@ const Home = () => {
           id="input_name"
           name="input_name"
           onChange={e => {
-            date = e.target.value;
             setRender(!render);
           }}
         ></input>
