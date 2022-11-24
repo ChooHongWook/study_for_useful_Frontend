@@ -20,12 +20,28 @@ const Home = () => {
         <label htmlFor="input_name">이름</label>
         <input
           type="text"
-          id="input_name"
+          id="input_name_kr"
           name="input_name"
           onChange={e => {
             setRender(!render);
           }}
-        ></input>
+        />
+        <input
+          type="text"
+          id="input_name_en"
+          name="input_name"
+          onChange={e => {
+            setRender(!render);
+          }}
+        />
+        <input
+          type="text"
+          id="input_name_jas"
+          name="input_name"
+          onChange={e => {
+            setRender(!render);
+          }}
+        />
       </div>
       <div>
         <label htmlFor="input_url">url</label>
