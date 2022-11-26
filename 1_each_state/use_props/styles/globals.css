@@ -128,7 +128,25 @@ table {
   border-spacing: 0;
 }
 /* ---------여기부터 시작------- */
+* {
+  margin: 5px;
+}
+
 html {
   display: block;
   padding: 20px;
+}
+img {
+  max-height: 300px;
+  max-width: 400px;
+}
+
+.div_button {
+  background-color: lightblue;
+}
+
+.container {
+  max-width: 520px;
+  border: 5px solid gray;
+  padding: 15px;
 }
