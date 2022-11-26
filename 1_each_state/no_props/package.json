@@ -1,7 +1,7 @@
 {
-  "name": "each_state.use_react_redux",
+  "name": "each_state.use_props",
   "version": "1.0.0",
-  "description": "",
+  "description": "props를 사용하여 state를 사용",
   "main": "index.js",
   "scripts": {
     "dev": "next",
