@@ -21,9 +21,9 @@ const Home = () => {
             </li>
             <li>
               <Link
-                href={`${baseURL}/1_each_state/no_props`}
+                href={`${baseURL}/1_each_state/use_props`}
               >
-                no_props
+                use_props
               </Link>
             </li>
             <li>
@@ -36,15 +36,8 @@ const Home = () => {
           </ul>
         </li>
         <li>
-          each_state
+          some_state_optimise
           <ul>
-            <li>
-              <Link
-                href={`${baseURL}/1_each_state/no_props`}
-              >
-                no_props
-              </Link>
-            </li>
             <li>
               <Link
                 href={`${baseURL}/1_each_state/no_props`}
@@ -62,15 +55,8 @@ const Home = () => {
           </ul>
         </li>
         <li>
-          each_state
+          all_state_optimise
           <ul>
-            <li>
-              <Link
-                href={`${baseURL}/1_each_state/no_props`}
-              >
-                no_props
-              </Link>
-            </li>
             <li>
               <Link
                 href={`${baseURL}/1_each_state/no_props`}

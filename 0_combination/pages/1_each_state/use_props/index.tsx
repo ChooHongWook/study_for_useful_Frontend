@@ -2,6 +2,47 @@ import {users} from '../../../dummys/users';
 import React, {useState, useRef} from 'react';
 import {useRouter} from 'next/router';
 
+const BlockComponent = (props: any) => {
+  let test = {
+    kr: {},
+    en: {},
+    ja: {},
+  };
+  return (
+    <>
+      <label>콘서트 이름</label>
+
+      {Object.keys(test).map((e) => {
+        return (
+          <>
+            <label htmlFor={`input_url_${e}`}>
+              {e}
+            </label>
+            <input
+              type="text"
+              id={`input_url_${e}`}
+              name="input_url"
+              value={props.value}
+              onChange={(e) => {
+                props.setVelue(e.target.value);
+              }}
+            />
+          </>
+        );
+      })}
+      <input
+        type="text"
+        id="input_url"
+        name="input_url"
+        value={props.value}
+        onChange={(e) => {
+          props.setVelue(e.target.value);
+        }}
+      />
+    </>
+  );
+};
+
 const Home = () => {
   console.log('랜더링 확인용');
   const router = useRouter();
