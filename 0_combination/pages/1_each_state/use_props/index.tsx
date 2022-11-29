@@ -1,20 +1,30 @@
-import {users} from '../../../dummys/users';
-import React, {useState, useRef} from 'react';
-import {useRouter} from 'next/router';
+import { users } from '../../../dummys/users';
+import React, { useState, useRef } from 'react';
+import { useRouter } from 'next/router';
 
 const BlockComponent = (props: any) => {
-  let test = {
-    kr: {},
-    en: {},
-    ja: {},
+  const title = props.title || '이름제목'
+  let langObj = props.langObj || {
+    kr: {
+      state: '',
+      setState: () => { },
+    },
+    en: {
+      state: '',
+      setState: () => { },
+    },
+    ja: {
+      state: '',
+      setState: () => { },
+    },
   };
   return (
     <>
-      <label>콘서트 이름</label>
+      <label>콘서트 이름{title}</label>
 
-      {Object.keys(test).map((e) => {
+      {Object.keys(langObj).map((e, idx) => {
         return (
-          <>
+          <React.Fragment key={`lang_input_${idx}`}>
             <label htmlFor={`input_url_${e}`}>
               {e}
             </label>
@@ -27,7 +37,7 @@ const BlockComponent = (props: any) => {
                 props.setVelue(e.target.value);
               }}
             />
-          </>
+          </React.Fragment>
         );
       })}
       <input
@@ -90,7 +100,7 @@ const Home = () => {
     imageName,
   };
 
-  const handle = () => {};
+  const handle = () => { };
   const handleSubmit = (e) => {
     alert(
       `A name was submitted !!: 
@@ -325,15 +335,15 @@ const Home = () => {
               console.log(
                 'target.files[0].name',
                 e.target.files &&
-                  e.target.files[0].name,
+                e.target.files[0].name,
               );
               setImageName(
                 e.target.files &&
-                  e.target.files[0].name,
+                e.target.files[0].name,
               );
               encodeFileToBase64(
                 e.target.files &&
-                  e.target.files[0],
+                e.target.files[0],
               );
             }}
           ></input>

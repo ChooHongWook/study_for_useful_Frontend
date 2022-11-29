@@ -1,9 +1,9 @@
-import {users} from '../dummys/users';
-import React, {useState, useRef} from 'react';
-import {useRouter} from 'next/router';
+import { users } from '../dummys/users';
+import React, { useState, useRef } from 'react';
+import { useRouter } from 'next/router';
 import Link from 'next/link';
 
-const baseURL = 'http://localhost:3000';
+const baseURL = 'http://localhost:3001';
 
 const Home = () => {
   return (
