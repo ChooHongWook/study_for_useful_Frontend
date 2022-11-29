@@ -1,54 +1,50 @@
-import { users } from '../../../dummys/users';
-import React, { useState, useRef } from 'react';
-import { useRouter } from 'next/router';
+import {users} from '../../../dummys/users';
+import React, {useState, useRef} from 'react';
+import {useRouter} from 'next/router';
 
 const BlockComponent = (props: any) => {
-  const title = props.title || '이름제목'
+  const title = props.title || '';
+  const type = props.type || 'text';
   let langObj = props.langObj || {
     kr: {
       state: '',
-      setState: () => { },
+      setState: () => {},
     },
     en: {
       state: '',
-      setState: () => { },
+      setState: () => {},
     },
     ja: {
       state: '',
-      setState: () => { },
+      setState: () => {},
     },
   };
   return (
     <>
-      <label>콘서트 이름{title}</label>
-
-      {Object.keys(langObj).map((e, idx) => {
+      <label>{title}</label>
+      <br />
+      {Object.keys(langObj).map((ele, idx) => {
         return (
-          <React.Fragment key={`lang_input_${idx}`}>
-            <label htmlFor={`input_url_${e}`}>
-              {e}
+          <React.Fragment
+            key={`${title}_lang_input_${idx}`}
+          >
+            <label htmlFor={`input_url_${ele}`}>
+              {ele}
             </label>
             <input
-              type="text"
-              id={`input_url_${e}`}
+              type={type}
+              id={`input_url_${ele}`}
               name="input_url"
-              value={props.value}
-              onChange={(e) => {
-                props.setVelue(e.target.value);
+              value={langObj[ele].state}
+              onChange={(event) => {
+                langObj[ele].setState(
+                  event.target.value,
+                );
               }}
             />
           </React.Fragment>
         );
       })}
-      <input
-        type="text"
-        id="input_url"
-        name="input_url"
-        value={props.value}
-        onChange={(e) => {
-          props.setVelue(e.target.value);
-        }}
-      />
     </>
   );
 };
@@ -60,10 +56,46 @@ const Home = () => {
   const [nameKr, setNameKr] = useState('');
   const [nameEn, setNameEn] = useState('');
   const [nameJa, setNameJa] = useState('');
+  const nameObj = {
+    kr: {
+      state: nameKr,
+      setState: setNameKr,
+    },
+    en: {
+      state: nameEn,
+      setState: setNameEn,
+    },
+    ja: {
+      state: nameJa,
+      setState: setNameJa,
+    },
+  };
   const [actorKr, setActorKr] = useState('');
   const [actorEn, setActorEn] = useState('');
   const [actorJa, setActorJa] = useState('');
+
+  const actorObj = {
+    kr: {
+      state: actorKr,
+      setState: setActorKr,
+    },
+    en: {
+      state: actorEn,
+      setState: setActorEn,
+    },
+    ja: {
+      state: actorJa,
+      setState: setActorJa,
+    },
+  };
   const [url, setUrl] = useState('');
+
+  const urlObj = {
+    url: {
+      state: url,
+      setState: setUrl,
+    },
+  };
   const [year, setYear] = useState<
     number | undefined
   >();
@@ -73,6 +105,20 @@ const Home = () => {
   const [date, setDate] = useState<
     number | undefined
   >();
+  const dateObj = {
+    년: {
+      state: year,
+      setState: setYear,
+    },
+    월: {
+      state: month,
+      setState: setMonth,
+    },
+    일: {
+      state: date,
+      setState: setDate,
+    },
+  };
   const [location, setLocation] =
     useState('seoul');
   const [imageName, setImageName] =
@@ -100,7 +146,7 @@ const Home = () => {
     imageName,
   };
 
-  const handle = () => { };
+  const handle = () => {};
   const handleSubmit = (e) => {
     alert(
       `A name was submitted !!: 
@@ -112,6 +158,7 @@ const Home = () => {
   const handleSubmitConsole = (e) => {
     console.log('submitData:', submitData);
   };
+  console.log('test');
   const handleAlertInfo = (e) => {
     alert(
       '전송하고싶으면 `년` 정보를 넣어주세요',
@@ -158,167 +205,45 @@ const Home = () => {
           </select>
         </div>
         <br />
-        <div>
-          <label htmlFor="input_name_kr">
-            콘서트 이름
-          </label>
-          <br />
-          <label htmlFor="input_name_kr">
-            kr
-          </label>
-          <input
-            type="text"
-            id="input_name_kr"
-            name="input_name"
-            value={nameKr}
-            onChange={(e) => {
-              setNameKr(e.target.value);
-            }}
-          />
-          <label htmlFor="input_name_en">
-            en
-          </label>
-          <input
-            type="text"
-            id="input_name_en"
-            name="input_name"
-            value={nameEn}
-            onChange={(e) => {
-              setNameEn(e.target.value);
-            }}
-          />
-          <label htmlFor="input_name_ja">
-            ja
-          </label>
-          <input
-            type="text"
-            id="input_name_ja"
-            name="input_name"
-            value={nameJa}
-            onChange={(e) => {
-              setNameJa(e.target.value);
-            }}
-          />
-        </div>
-
+        <BlockComponent
+          title="콘서트 이름"
+          langObj={nameObj}
+        />
         <br />
 
-        <div>
-          <label htmlFor="input_actor">
-            출연자
-          </label>
-          <br />
-          <label htmlFor="input_actor_kr">
-            kr
-          </label>
-          <input
-            type="text"
-            id="input_actor_kr"
-            name="input_actor"
-            value={actorKr}
-            onChange={(e) => {
-              setActorKr(e.target.value);
-            }}
-          />
-          <label htmlFor="input_actor_en">
-            en
-          </label>
-          <input
-            type="text"
-            id="input_actor_en"
-            name="input_actor"
-            value={actorEn}
-            onChange={(e) => {
-              setActorEn(e.target.value);
-            }}
-          />
-          <label htmlFor="input_actor_ja">
-            ja
-          </label>
-          <input
-            type="text"
-            id="input_actor_ja"
-            name="input_actor"
-            value={actorJa}
-            onChange={(e) => {
-              setActorJa(e.target.value);
-            }}
-          />
-          <br />
+        <br />
+        <BlockComponent
+          title="출연자"
+          langObj={actorObj}
+          type="number"
+        />
+        <br />
+        <span className="footer">
+          출연자가 여러명인경우 ','로 구분해주세요
+        </span>
+        <br />
+        <br />
+        <BlockComponent
+          title=""
+          langObj={urlObj}
+        />
+        <br />
+        {url.slice(0, 4) === 'http' ? null : (
           <span className="footer">
-            출연자가 여러명인경우 ','로
-            구분해주세요
+            http 로 시작하십시오
           </span>
-        </div>
-
+        )}
+        <br />
         <br />
 
-        <div>
-          <label htmlFor="input_url">url</label>
-          <input
-            type="text"
-            id="input_url"
-            name="input_url"
-            value={url}
-            onChange={(e) => {
-              setUrl(e.target.value);
-            }}
-          ></input>
-          <br />
-          {url.slice(0, 4) === 'http' ? null : (
-            <span className="footer">
-              http 로 시작하십시오
-            </span>
-          )}
-        </div>
+        <BlockComponent
+          title="날짜"
+          langObj={dateObj}
+          type="number"
+        />
 
         <br />
-
-        <div>
-          <label htmlFor="input_year">년</label>
-          <input
-            type="number"
-            id="input_year"
-            name="input_year"
-            value={year}
-            onChange={(e) => {
-              setYear(parseInt(e.target.value));
-            }}
-          ></input>
-        </div>
-
         <br />
-
-        <div>
-          <label htmlFor="input_month">월</label>
-          <input
-            type="number"
-            id="input_month"
-            name="input_month"
-            value={month}
-            onChange={(e) => {
-              setMonth(parseInt(e.target.value));
-            }}
-          ></input>
-        </div>
-
-        <br />
-
-        <div>
-          <label htmlFor="input_date">일</label>
-          <input
-            type="number"
-            id="input_date"
-            name="input_date"
-            value={date}
-            onChange={(e) => {
-              setDate(parseInt(e.target.value));
-            }}
-          ></input>
-        </div>
-
-        <br />
-
         <div>
           <label htmlFor="input_image">
             이미지
@@ -327,23 +252,13 @@ const Home = () => {
             type="file"
             id="input_image"
             onChange={(e) => {
-              console.log('target', e.target);
-              console.log(
-                'target.value',
-                e.target.value,
-              );
-              console.log(
-                'target.files[0].name',
-                e.target.files &&
-                e.target.files[0].name,
-              );
               setImageName(
                 e.target.files &&
-                e.target.files[0].name,
+                  e.target.files[0].name,
               );
               encodeFileToBase64(
                 e.target.files &&
-                e.target.files[0],
+                  e.target.files[0],
               );
             }}
           ></input>
@@ -356,9 +271,7 @@ const Home = () => {
             )}
           </div>
         </div>
-
         <br />
-
         <div>
           <label htmlFor="input_area">지역</label>
           <select
